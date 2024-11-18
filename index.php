@@ -1,4 +1,48 @@
 <?php require_once ("./stroage/db.php") ?>
+<?php require_once ("./stroage/user_crud.php") ?>
+<?php
+// $user = get_user_with_id($mysqli, 1);
+// if (!$user) {
+//     save_user($mysqli, "admin", "admin@gmail.com", "password", 1);
+// }
+$users = get_users($mysqli);
+$users = $users->fetch_all();
+$admin_user = array_filter($users, function ($user) {
+    return $user[4] == 1;
+});
+if (!$admin_user) {
+    $admin_password = password_hash("password", PASSWORD_BCRYPT);
+    save_user($mysqli, "admin", "admin@gmail.com", $admin_password, 1);
+}
+
+$email = $email_err = $password = $password_err = "";
+
+if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if ($email === "") {
+        $email_err = "Email cann't be blank!";
+    }
+    if ($password === "") {
+        $password_err = "Password cann't be blank!";
+    }
+    if ($email_err === "" && $password_err === "") {
+        $user = get_user_with_email($mysqli, $email);
+        if (!$user) {
+            $email_err = "User does not exist!";
+        } else {
+            // if ($password !== $user['password']) {
+            //     $password_err = "Password does not match!";
+            // } else {
+            //     header("Location:./home.php");
+            // }
+            var_dump(password_verify($password, $user['password']));
+        }
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +60,14 @@
             <h2 class="text-center">Login Form</h2>
             <form method="post">
                 <div class="form-floating my-5">
-                    <input type="email" class="form-control" id="email" placeholder="name@gmail.com">
+                    <input name="email" type="text" class="form-control" id="email" value="<?= $email ?>" placeholder="name@gmail.com">
                     <label for="email">Email address</label>
+                    <div class="text-danger" style="font-size:12px;"><?= $email_err ?></div>
                 </div>
                 <div class="form-floating mt-5 mb-2">
-                    <input type="password" class="form-control" id="password" placeholder="password">
+                    <input name="password"  type="password" class="form-control" id="password" value="<?= $password ?>" placeholder="password">
                     <label for="password">Password</label>
+                    <div class="text-danger" style="font-size:12px;"><?= $password_err ?></div>
                 </div>
                 <div class="form-check">
                     <input type="checkbox" id="show" class="form-check-input">
