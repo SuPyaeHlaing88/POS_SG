@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #f8f5f0;
+}
+.login-container {
+  width: 500px;
+  margin-top: 150px;
+}
+.custom-btn {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  background-color: #7373ef;
+  border: none;
+  border-radius: 5px;
+}
