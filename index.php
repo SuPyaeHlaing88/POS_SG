@@ -4,6 +4,7 @@
 if (isset($_COOKIE['user'])) {
     header("location:./home.php");
 }
+
 // $user = get_user_with_id($mysqli, 1);
 // if (!$user) {
 //     save_user($mysqli, "admin", "admin@gmail.com", "password", 1);
@@ -66,6 +67,9 @@ if (isset($_POST['email'])) {
     <div class="card mx-auto login-container">
         <div class="card-body">
             <h2 class="text-center">Login Form</h2>
+            <?php if (isset($_GET['invalid'])) { ?>
+                <div class="alert alert-danger"><?= $_GET['invalid'] ?></div>
+            <?php } ?>
             <form method="post">
                 <div class="form-floating my-5">
                     <input name="email" type="text" class="form-control" id="email" value="<?= $email ?>" placeholder="name@gmail.com">

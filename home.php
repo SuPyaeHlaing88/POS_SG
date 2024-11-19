@@ -1,19 +1,11 @@
+<?php require_once("./auth/isLogin.php"); ?>
 <?php
-if (isset($_POST['logout'])) {
-    setcookie("user", '', -1, "/");
+if ($user['role'] == 1) {
+    header("location:./admin/index.html");
+} elseif ($user['role'] == 2) {
+    header("location:./cashier/index.html");
+} elseif ($user['role'] ==  3) {
+    header("location:./kitchen/index.html");
+} else {
+    header("location:./waiter/index.html");
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>welcome</h1>
-    <form method="post">
-        <button name="logout" class="btn btn-danger">Logout</button>
-    </form>
-</body>
-</html>
