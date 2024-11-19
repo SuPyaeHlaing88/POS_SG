@@ -1,6 +1,9 @@
 <?php require_once ("./stroage/db.php") ?>
 <?php require_once ("./stroage/user_crud.php") ?>
 <?php
+if (isset($_COOKIE['user'])) {
+    header("location:./home.php");
+}
 // $user = get_user_with_id($mysqli, 1);
 // if (!$user) {
 //     save_user($mysqli, "admin", "admin@gmail.com", "password", 1);
@@ -18,8 +21,8 @@ if (!$admin_user) {
 $email = $email_err = $password = $password_err = "";
 
 if (isset($_POST['email'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $mysqli->real_escape_string($_POST['email']) ;
+    $password = $mysqli->real_escape_string($_POST['password']);
     if ($email === "") {
         $email_err = "Email cann't be blank!";
     }
@@ -36,7 +39,12 @@ if (isset($_POST['email'])) {
             // } else {
             //     header("Location:./home.php");
             // }
-            var_dump(password_verify($password, $user['password']));
+            if (password_verify($password, $user['password'])) {
+                setcookie("user", json_encode($user), time() + 1000 * 60 * 60 * 24 * 14, "/");
+                header("Location:./home.php");
+            } else {
+                $password_err = "Password does not match!";
+            }
         }
     }
 }
