@@ -1,3 +1,4 @@
+<?php require_once ("../auth/isLogin.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Casher page</h1>
+    <h1>Kitchen page</h1>
 </body>
 </html>

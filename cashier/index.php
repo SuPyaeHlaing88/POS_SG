@@ -1,3 +1,5 @@
+<?php require_once ("../auth/isLogin.php") ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Admin page</h1>
+    <h1>Cashier page</h1>
+    <form method="post">
+        <button name="logout">Logout</button>
+    </form>
 </body>
 </html>
