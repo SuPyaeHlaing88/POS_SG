@@ -23,9 +23,31 @@ body {
   min-width: 80px;
   width: 80px;
   padding: 20px;
+  color: #ffffff;
+}
+.sidebar-header {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0px;
+}
+.divition {
+  border-bottom: 1px solid #adadad;
+}
+.sidebar-header > i {
+  font-size: 28px;
+  margin-top: -5px;
+}
+.toggle {
+  text-align: center;
+  margin-top: 20px;
+}
+.toggle > i {
+  padding: 10px 15px;
+  background-color: #adadad;
+  border-radius: 50%;
 }
 .extend {
-  min-width: 210px;
+  min-width: 240px;
 }
 .content {
   min-height: 100vh;
