@@ -64,8 +64,10 @@ body {
 .sidebar:not(.extend) .sidebar-menu .fa-angle-down {
   display: none;
 }
-.sidebar:not(.extend) .sidebar-sub-menu {
+.sidebar:not(.extend) .sidebar-sub-menu,
+.sidebar:not(.extend) .sidebar-sub-menu i {
   padding-left: 0px;
+  font-size: 12px;
 }
 .extend {
   min-width: 240px;
