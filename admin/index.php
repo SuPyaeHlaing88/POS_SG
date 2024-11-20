@@ -1,14 +1,13 @@
-<?php require_once ("../auth/isLogin.php") ?>
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Admin page</h1>
-</body>
-</html>
+<?php require_once ("../layout/header.php") ?>
+<div class="main d-flex">
+    <div class="sidebar extend">
+        <div class="sidebar-header">
+            <i class="fa fa-smile"></i>
+            <h5 class="sidebar-label">JO JO Hotpot</h5>
+        </div>
+    </div>
+    <div class="content">
+b
+    </div>
+</div>
+<?php require_once ("../layout/footer.php") ?>

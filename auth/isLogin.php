@@ -22,6 +22,9 @@ if (!$user) {
             case 'waiter':
                 $code = 4;
                 break;
+            default:
+                $code = 0;
+                break;
         }
     }
     if ($code != $user['role']) {

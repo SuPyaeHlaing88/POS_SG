@@ -18,3 +18,15 @@ body {
   border: none;
   border-radius: 5px;
 }
+.sidebar {
+  background-color: #7373ef;
+  min-width: 80px;
+  width: 80px;
+  padding: 20px;
+}
+.extend {
+  min-width: 210px;
+}
+.content {
+  min-height: 100vh;
+}
