@@ -25,6 +25,10 @@ body {
   padding: 20px;
   color: #ffffff;
 }
+.sidebar a {
+  text-decoration: none;
+  color: #ffffff;
+}
 .sidebar-header {
   display: flex;
   justify-content: space-around;
@@ -32,10 +36,19 @@ body {
 }
 .divition {
   border-bottom: 1px solid #adadad;
+  margin: 5px 0px;
 }
 .sidebar-header > i {
   font-size: 28px;
   margin-top: -5px;
+}
+.sidebar-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.sidebar-sub-menu {
+  padding-left: 15px;
 }
 .toggle {
   text-align: center;
@@ -45,6 +58,14 @@ body {
   padding: 10px 15px;
   background-color: #adadad;
   border-radius: 50%;
+}
+.sidebar:not(.extend) .sidebar-header > h5,
+.sidebar:not(.extend) .sidebar-menu a,
+.sidebar:not(.extend) .sidebar-menu .fa-angle-down {
+  display: none;
+}
+.sidebar:not(.extend) .sidebar-sub-menu {
+  padding-left: 0px;
 }
 .extend {
   min-width: 240px;
