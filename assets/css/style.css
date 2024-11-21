@@ -46,6 +46,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  cursor: pointer;
 }
 .sidebar-sub-menu {
   padding-left: 15px;

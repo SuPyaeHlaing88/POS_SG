@@ -21,7 +21,7 @@
         <div class="sidebar-menu">
             <div>
                 <i class="fa fa-list"></i>
-                <a> User List </a>
+                <a href="./user_list.php"> User List </a>
             </div>
         </div>
        </div>

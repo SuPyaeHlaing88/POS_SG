@@ -45,8 +45,11 @@ if (isset($_POST['userName'])) {
     }
     if (!$invalid) {
         $user_password = password_hash($password, PASSWORD_BCRYPT);
-        if (save_user($mysqli, $userName, $userEmail, $user_password, $role)) {
+        $status = save_user($mysqli, $userName, $userEmail, $user_password, $role);
+        if ($status === true) {
             header("Location:./user_list.php");
+        } else {
+            $invalid = $status;
         }
 
     }
@@ -55,7 +58,7 @@ if (isset($_POST['userName'])) {
     <div class="content">
       <?php require_once ("../layout/nav.php") ?>  
       <div class="card m-5">
-        <div class="card-body">
+        <div class="card-body"> 
             <h3>Add New User</h3>
             <div class="card my-4">
                 <div class="row">
@@ -63,6 +66,9 @@ if (isset($_POST['userName'])) {
                     <div class="card-body col-md-6">
                        <div class="card">
                         <div class="card-body">
+                            <?php if ($invalid !== "" && $invalid !== "err") { ?>
+                                    <div class="alert alert-danger"><?= $invalid ?></div>
+                            <?php } ?>
                             <form method="post">
                                 <div class="form-group my-3">
                                     <label class="form-label">User Name</label>
