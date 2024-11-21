@@ -16,3 +16,4 @@
     <script src="../assets/js/jquery.min.js"></script>
 </head>
 <body>
+<div class="main d-flex">

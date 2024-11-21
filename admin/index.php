@@ -1,60 +1,37 @@
 <?php require_once ("../layout/header.php") ?>
-<div class="main d-flex">
-    <div id="sidebar" class="sidebar extend">
-        <div class="sidebar-header">
-            <i class="fa fa-smile"></i>
-            <h5 class="sidebar-label">JO JO Hotpot</h5>
-        </div>
-       <div class="divition"></div>
-       <div class="sidebar-menu"  data-bs-toggle="collapse" data-bs-target="#user-menu">
-            <div>
-                <i class="fa fa-users"></i>
-                <a  style="width: 100%;"> User </a> 
-            </div> 
-            <i class="fa fa-angle-down"></i>
-       </div>
-       <div class="sidebar-sub-menu collapse" id="user-menu">
-        <div class="sidebar-menu">
-               <div>
-                    <i class="fa fa-user-plus"></i>
-                    <a href=""> Add User </a>
-               </div>
-        </div>
-        <div class="sidebar-menu">
-            <div>
-                <i class="fa fa-list"></i>
-                <a> User List </a>
-            </div>
-        </div>
-       </div>
-       <div class="sidebar-menu"  data-bs-toggle="collapse" data-bs-target="#user-menu">
-            <div>
-                <i class="fa fa-users"></i>
-                <a  style="width: 100%;"> Category </a> 
-            </div> 
-            <i class="fa fa-angle-down"></i>
-       </div>
-       <div class="sidebar-sub-menu collapse" id="user-menu">
-        <div class="sidebar-menu">
-               <div>
-                    <i class="fa fa-user-plus"></i>
-                    <a href=""> Add Category </a>
-               </div>
-        </div>
-        <div class="sidebar-menu">
-            <div>
-                <i class="fa fa-list"></i>
-                <a> Category List </a>
-            </div>
-        </div>
-       </div>
-       <div class="divition"></div>
-       <div class="toggle">
-            <i id="sidebar-toggle" class="fa fa-angle-left"></i>
-       </div>
-    </div>
+<?php require_once ("../layout/sidebar.php") ?>  
     <div class="content">
-b
+    <nav  class="nav">
+          <div>
+            <form method="post">
+              <div class="search-wapper">
+                <div class="d-flex search">
+                    <input type="text" name="search" placeholder="Search" />
+                </div>
+                <button class="search-icon">
+                    <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="profile-wapper">
+            <div>
+                User name
+            </div>
+            <div class="dropdown">
+              <div
+                type="button"
+                data-bs-toggle="dropdown"
+              >
+                <img class="profile" src="../assets/profile/profile.png">
+              </div>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
     </div>
-</div>
+
 <?php require_once ("../layout/footer.php") ?>
