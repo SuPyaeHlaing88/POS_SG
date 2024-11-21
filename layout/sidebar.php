@@ -15,7 +15,7 @@
         <div class="sidebar-menu">
                <div>
                     <i class="fa fa-user-plus"></i>
-                    <a href=""> Add User </a>
+                    <a href="./add_user.php"> Add User </a>
                </div>
         </div>
         <div class="sidebar-menu">
