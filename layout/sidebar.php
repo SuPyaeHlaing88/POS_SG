@@ -13,7 +13,7 @@
             <i  class="fa fa-angle-down"></i>
        </div>
        <div class="sidebar-sub-menu collapse" id="user-menu">
-        <div class="sidebar-menu">
+        <div onclick="location.replace('./add_user.php')" class="sidebar-menu">
                <div>
                     <i class="fa fa-user-plus"></i>
                     <a href="./add_user.php"> Add User </a>

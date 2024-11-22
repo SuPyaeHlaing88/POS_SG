@@ -52,7 +52,7 @@ function get_user_filter($mysqli, $key)
 
 function delete_users($mysqli, $id)
 {
-    $sql = "DELETE * FROM `user` WHERE `id`= $id";
+    $sql = "DELETE  FROM `user` WHERE `id`= $id";
     return $mysqli->query($sql);
 }
 

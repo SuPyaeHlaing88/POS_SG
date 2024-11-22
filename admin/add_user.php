@@ -47,7 +47,8 @@ if (isset($_POST['userName'])) {
         $user_password = password_hash($password, PASSWORD_BCRYPT);
         $status = save_user($mysqli, $userName, $userEmail, $user_password, $role);
         if ($status === true) {
-            header("Location:./user_list.php");
+            // header("Location:./user_list.php");
+            echo "<script>location.replace('./user_list.php?lest')</script>";
         } else {
             $invalid = $status;
         }

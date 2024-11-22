@@ -6,7 +6,16 @@ $currentPage = 0;
 if (isset($_GET["pageNo"])) {
     $currentPage = (int) $_GET["pageNo"];
 }
+
 $pagTotal = get_user_pag_count($mysqli);
+if (isset($_GET['lest'])) {
+    $currentPage = ($pagTotal * 2) - 2;
+}
+if (isset($_GET['deleteId'])) {
+    if (delete_users($mysqli, $_GET['deleteId'])) {
+        echo "<script>location.replace('./user_list.php')</script>";
+    }
+}
 ?>
 
     <div class="content">
@@ -30,7 +39,7 @@ $pagTotal = get_user_pag_count($mysqli);
                 if (isset($_POST["search"])) {
                     $users = get_user_filter($mysqli, $_POST['search']);
                 } ?>
-              <?php $i = 1; ?>
+              <?php $i = $currentPage + 1; ?>
               <?php while ($u = $users->fetch_assoc()) { ?>
                 <tr>
                   <td><?= $i ?></td>
@@ -52,7 +61,7 @@ $pagTotal = get_user_pag_count($mysqli);
                     <?php if ($u['id'] === $user['id']) { ?>
                       <button class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></button>
                     <?php } else { ?>
-                      <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                      <button class="btn btn-sm btn-danger deleteSelect" data-value="<?= $u['id'] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash"></i></button>
                     <?php } ?>
                   </th>
                 </tr>
