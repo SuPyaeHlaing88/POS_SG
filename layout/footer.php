@@ -27,6 +27,10 @@
             localStorage.setItem("collapse","collapse");
         }
     }
+    let url =location.href.split("/")
+    console.log(url[url.length-1].includes("list"));
+    let fileName = url[url.length-1];
+    if(!fileName.includes("list")) $("#search-wapper").html("")
 </script>
 </body>
 </html>

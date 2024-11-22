@@ -70,6 +70,9 @@ body {
   padding-left: 0px;
   font-size: 12px;
 }
+.sidebar:not(.extend) .sidebar-header i {
+  font-size: 38px;
+}
 .extend {
   min-width: 240px;
 }

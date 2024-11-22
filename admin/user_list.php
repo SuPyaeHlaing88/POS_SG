@@ -1,11 +1,20 @@
 <?php require_once ("../layout/header.php") ?>
 <?php require_once ("../layout/sidebar.php") ?>  
+
+<?php
+$currentPage = 0;
+if (isset($_GET["pageNo"])) {
+    $currentPage = (int) $_GET["pageNo"];
+}
+$pagTotal = get_user_pag_count($mysqli);
+?>
+
     <div class="content">
       <?php require_once ("../layout/nav.php") ?>  
       <div class="card m-5">
         <div class="card-body">
           <h3>User List</h3>
-          <table class="table table-bordered table-stripe">
+          <table class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>No</th>
@@ -16,8 +25,12 @@
               </tr>
             </thead>
             <tbody>
-              <?php $users = get_users($mysqli);
-$i = 1;?>
+              <?php $users = get_users($mysqli, $currentPage); ?>
+              <?php
+                if (isset($_POST["search"])) {
+                    $users = get_user_filter($mysqli, $_POST['search']);
+                } ?>
+              <?php $i = 1; ?>
               <?php while ($u = $users->fetch_assoc()) { ?>
                 <tr>
                   <td><?= $i ?></td>
@@ -43,9 +56,11 @@ $i = 1;?>
                     <?php } ?>
                   </th>
                 </tr>
-              <?php } ?>
+              <?php $i++;
+              } ?>
             </tbody>
           </table>
+            <?php require_once("../layout/pagination.php"); ?>
         </div>
       </div>
     </div>
