@@ -1,0 +1,31 @@
+<!-- for item with rows  -->
+<!-- $i = ceil(count($items)/3);
+                    <?php for ($item = 0; $item < 3; $item++) {   ?>
+                        <div class="col">
+                            <a class="select-item" href="?catID=<?= $category_id ?>& itemId=<?= $item['id'] ?>">
+                                <img src="data:image/' . $type . ';base64,<?= $item['img'] ?>">
+                                <div class="item-text">
+                                    <span><?php
+                                            if (strlen($item['name']) > 10) {
+                                                echo substr($item['name'], 0, 10) . "...";
+                                            } else {
+                                                echo $item['name'];
+                                            }
+                                            ?></span>
+                                    <span><?= $item['price'] ?> MMK</span>
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?> -->
+<!-- for items with rows end -->
+
+
+FOR TABLE CLASS
+
+class="c-table
+<?php if ($table['taken']) {
+    echo "taken";
+} else {
+    echo "free-table";
+} ?>
+"

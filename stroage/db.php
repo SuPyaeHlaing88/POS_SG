@@ -1,10 +1,11 @@
+
 <?php
 
 try {
     $mysqli = new mysqli("127.0.0.10", "root", "");
-    $sql = "CREATE DATABASE IF NOT EXISTS `pos`";
+    $sql = "CREATE DATABASE IF NOT EXISTS `pos_one`";
     if ($mysqli->query($sql)) {
-        if ($mysqli->select_db("pos")) {
+        if ($mysqli->select_db("pos_one")) {
             create_table($mysqli);
         }
     }
@@ -15,19 +16,19 @@ try {
 
 function create_table($mysqli)
 {
-    $sql = "CREATE TABLE IF NOT EXISTS `user`(`id` INT AUTO_INCREMENT,`username` VARCHAR(45) NOT NULL,`email` VARCHAR(95) UNIQUE NOT NULL,`password` VARCHAR(100) NOT NULL,`role` INT NOT NULL,PRIMARY KEY(`id`))";
+    $sql = "CREATE TABLE IF NOT EXISTS `user`(`id` INT AUTO_INCREMENT,`username` VARCHAR(45) NOT NULL,`email` VARCHAR(95) UNIQUE NOT NULL,`password` VARCHAR(100) NOT NULL,`role` INT NOT NULL,`profile` VARCHAR(225) NOT NULL ,PRIMARY KEY(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS `table`(`id` INT AUTO_INCREMENT,`tableName` VARCHAR(45) NOT NULL,`seat` INT  NOT NULL,`taken` BOOLEAN NOT NULL,PRIMARY KEY(`id`))";
+    $sql = "CREATE TABLE IF NOT EXISTS `table`(`id` INT AUTO_INCREMENT,`tableName` VARCHAR(45) NOT NULL,`seat` INT  NOT NULL,`taken` BOOLEAN DEFAULT(0),PRIMARY KEY(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS `category`(`id` INT AUTO_INCREMENT,`categoryName` VARCHAR(45) NOT NULL,PRIMARY KEY(`id`))";
+    $sql = "CREATE TABLE IF NOT EXISTS `category`(`id` INT AUTO_INCREMENT,`categoryName` VARCHAR(45) NOT NULL,`categoryImg` LONGTEXT NOT NULL,PRIMARY KEY(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS `item`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL,`price` INT NOT NULL,`category_id` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY(`category_id`) REFERENCES `category`(`id`))";
+    $sql = "CREATE TABLE IF NOT EXISTS `item`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL,`price` INT NOT NULL,`category_id` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY(`category_id`) REFERENCES `category`(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }

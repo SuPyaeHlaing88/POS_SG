@@ -23,6 +23,8 @@
     let deleteSelect = $(".deleteSelect");
     let collapse =localStorage.getItem("collapse");
     let deleteKey = undefined;
+    let token = $(".token");
+
     if(collapse){
         sidebar.removeClass("extend");
         toggle.addClass("fa-angle-right")
@@ -35,6 +37,7 @@
         sidebar.toggleClass("extend");
         toggleCollapse();
     })
+
     $(".sidebar-menu").on("click",function(){
        $(this).find("i.fa-angle-down").toggleClass("fa-angle-up");
     })
@@ -47,12 +50,17 @@
         }
     }
 
+    // token.on("click", function(){
+    //     $(this).toggleClass("taken");
+
+
+    // })
     deleteSelect.on("click",function(e){
         deleteKey = e.currentTarget.getAttribute("data-value");
     })
 
     $("#confirmDelete").on("click",()=>location.replace("?deleteId="+deleteKey));
-
+    // for search list
     let url =location.href.split("/")
     console.log(url[url.length-1].includes("list"));
     let fileName = url[url.length-1];

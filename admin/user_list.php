@@ -8,8 +8,8 @@ if (isset($_GET["pageNo"])) {
 }
 
 $pagTotal = get_user_pag_count($mysqli);
-if (isset($_GET['lest'])) {
-    $currentPage = ($pagTotal * 2) - 2;
+if (isset($_GET['last'])) {
+    $currentPage = ($pagTotal * 5) - 5;
 }
 if (isset($_GET['deleteId'])) {
     if (delete_users($mysqli, $_GET['deleteId'])) {
@@ -22,7 +22,13 @@ if (isset($_GET['deleteId'])) {
       <?php require_once ("../layout/nav.php") ?>  
       <div class="card m-5">
         <div class="card-body">
-          <h3>User List</h3>
+          <!-- <div class="head-title" style="display: flex;"> -->
+          <h3 >User List</h3>
+          <div class="justify-content-end">
+          <button class="btn btn-outline-primary" onclick="location.replace('add_user.php')">Add User</button>
+          </div>
+          <!-- </div> -->
+          
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -30,16 +36,22 @@ if (isset($_GET['deleteId'])) {
                 <th>User Name</th>
                 <th>User Email</th>
                 <th>User Role</th>
+                <th>User Image</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <?php $users = get_users($mysqli, $currentPage); ?>
               <?php
-                if (isset($_POST["search"])) {
+                if (isset($_POST["search"]) && $_POST['search'] != '') {
                     $users = get_user_filter($mysqli, $_POST['search']);
                 } ?>
-              <?php $i = $currentPage + 1; ?>
+              <?php
+              if (isset($_POST["search"])) {
+                  $i = 1;
+              } else {
+                  $i = $currentPage + 1;
+              } ?>
               <?php while ($u = $users->fetch_assoc()) { ?>
                 <tr>
                   <td><?= $i ?></td>
@@ -57,6 +69,9 @@ if (isset($_GET['deleteId'])) {
                     }
                   ?>
                   </td>
+                  <td>
+                    <img class="table-img" src="../assets/profile/<?= $u['profile'] ?>">
+                  </td>
                   <th>
                     <?php if ($u['id'] === $user['id']) { ?>
                       <button class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></button>
@@ -69,7 +84,11 @@ if (isset($_GET['deleteId'])) {
               } ?>
             </tbody>
           </table>
-            <?php require_once("../layout/pagination.php"); ?>
+          <?php if (!isset($_POST['search'])) {
+              require_once("../layout/pagination.php");
+          } elseif (isset($_POST['search']) && $_POST['search'] == "") {
+              require_once("../layout/pagination.php");
+          } ?>
         </div>
       </div>
     </div>

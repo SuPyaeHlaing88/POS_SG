@@ -1,6 +1,9 @@
 <?php require_once ("../auth/isLogin.php") ?>
 <?php require_once ("../stroage/db.php") ?>
 <?php require_once ("../stroage/user_crud.php") ?>
+<?php require_once ("../stroage/table_crud.php") ?>
+<?php require_once ("../stroage/category_crud.php") ?>
+<?php require_once ("../stroage/item_crud.php") ?>
 
 
 <!DOCTYPE html>
