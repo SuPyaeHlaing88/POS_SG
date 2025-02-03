@@ -15,6 +15,12 @@ function get_table_with_id($mysqli, $id)
     return $table->fetch_assoc();
 }
 
+function taken_table($mysqli, $table_id)
+{
+    $sql = "UPDATE `table` SET `taken`=1 WHERE `id`=$table_id";
+    return $mysqli->query($sql);
+}
+
 function get_tables($mysqli)
 {
     $sql = "SELECT * FROM `table`";
@@ -44,7 +50,7 @@ function get_table_pag_count($mysqli)
     $sql = "SELECT COUNT(`id`) AS total FROM `table`";
     $count = $mysqli->query($sql);
     $total = $count->fetch_assoc();
-    $page = ceil($total['total'] / 5) ;
+    $page = ceil($total['total'] / 5);
     return $page;
 }
 

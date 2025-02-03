@@ -136,5 +136,4 @@ if (isset($_POST['name'])) {
     </div>
 
 </div>
-
 <?php require_once("../layout/footer.php") ?>

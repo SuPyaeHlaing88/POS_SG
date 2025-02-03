@@ -57,7 +57,7 @@ if (isset($_GET['deleteId'])) {
               <td><?= $cate['categoryName'] ?></td>
               <td>
                 <img class="table-img" src="data:image/' . $type . ';base64,<?= $cate['categoryImg'] ?>">
-              </td>>
+              </td>
               <td>
                 <a href="add_category.php?id=<?= $cate['id'] ?>" class="btn  btn-sm btn-primary">
                   <i class="fa fa-pen"></i>

@@ -12,9 +12,8 @@ if (isset($_GET['last'])) {
   $currentPage = ($pagTotal * 5) - 5;
 }
 if (isset($_GET['deleteId'])) {
-  if (delete_item($mysqli, $_GET['deleteId'])) { 
+  if (delete_item($mysqli, $_GET['deleteId'])) {
     echo "<script>location.replace('./item_list.php')</script>";
-    
   }
 }
 ?>

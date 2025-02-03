@@ -7,6 +7,7 @@ if (!$user) {
     $url = $_SERVER['REQUEST_URI'];
     $arr = explode('/', $url);
     $code = 0;
+
     if ($arr[count($arr) - 2] !== "pos") {
         $role_name = $arr[count($arr) - 2];
         switch ($role_name) {
@@ -30,7 +31,6 @@ if (!$user) {
     if ($code != $user['role']) {
         header("location:../401.html");
     }
-
 }
 
 

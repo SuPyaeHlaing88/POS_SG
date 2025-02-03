@@ -28,13 +28,21 @@ function create_table($mysqli)
     if (!$mysqli->query($sql)) {
         return false;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS `item`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL,`price` INT NOT NULL,`category_id` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY(`category_id`) REFERENCES `category`(`id`))";
+    $sql = "CREATE TABLE IF NOT EXISTS `item`(`id` INT AUTO_INCREMENT,`name` VARCHAR(45) NOT NULL,`price` BIGINT NOT NULL,`category_id` INT NOT NULL,`img` LONGTEXT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY(`category_id`) REFERENCES `category`(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }
-    $sql = "CREATE TABLE IF NOT EXISTS `invoice` (`id` INT AUTO_INCREMENT,`item_id` INT NOT NULL,`table_id` INT NOT NULL,`paid` INT NOT NULL,`qty` INT NOT NULL,PRIMARY KEY (`id`),FOREIGN KEY (`item_id`) REFERENCES `item`(`id`),FOREIGN KEY (`table_id`) REFERENCES `table`(`id`))";
+
+    $sql = "CREATE TABLE IF NOT EXISTS `invoice` (`id` INT AUTO_INCREMENT,`table_id` INT NOT NULL,`paid` INT NOT NULL,`qty` INT NOT NULL,PRIMARY KEY (`id`),FOREIGN KEY (`table_id`) REFERENCES `table`(`id`))";
     if (!$mysqli->query($sql)) {
         return false;
     }
+    
+   
+    $sql = "CREATE TABLE IF NOT EXISTS `order`(`id` INT AUTO_INCREMENT,`item_id` INT NOT NULL,`invoice_id` INT NOT NULL,`qty` INT NOT NULL,`status` INT NOT NULL,PRIMARY KEY(`id`),FOREIGN KEY (`item_id`) REFERENCES `item`(`id`),FOREIGN KEY(`invoice_id`) REFERENCES `invoice`(`id`))";
+    if (!$mysqli->query($sql)) {
+        return false;
+    }
+
     return true;
 }

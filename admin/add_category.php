@@ -65,6 +65,7 @@ if (isset($_POST['categoryName'])) {
             <div class="card my-4">
                 <div class="row">
                     <div class="col-3 d-none d-md-block"></div>
+
                     <div class="card-body col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -87,6 +88,7 @@ if (isset($_POST['categoryName'])) {
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-3 d-none d-md-block"></div>
                 </div>
             </div>
